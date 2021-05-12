@@ -1,0 +1,26 @@
+$btnColor:#d10157;
+
+body
+{
+	margin:0;
+	font-family: calibri;
+}
+input,button,a
+{
+	padding: 10px;
+	border:0;
+	outline:0;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+.container
+{
+	min-height: 80vh;
+}
+
+
+button,a
+{
+	text-transform: capitalize;
+}

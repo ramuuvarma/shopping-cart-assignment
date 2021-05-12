@@ -1,0 +1,28 @@
+$btnColor:#d10157;
+.slider-container
+{
+	padding: 5vw;
+}
+
+.slider-container img
+{
+	width: 100%;
+}
+.slider-container .controls
+{
+	padding: 10px;
+	text-align: center;
+}
+
+.slider-container .controls button
+{
+	width: 30px;
+	height: 5px;
+	padding: 0;
+	margin:10px;
+}
+.slider-container .controls button:focus,
+.slider-container .controls button:hover
+{
+	background: $btnColor;
+}
