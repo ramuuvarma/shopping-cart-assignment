@@ -38,7 +38,7 @@ function Products()
 		<div className="right">
 			{products.map(product=>
 				<Suspense  fallback={<p align="center"><i className="fa fa-5x fa-spin fa-spinner"></i></p>}>
-					<Product key={product.id} product={product} />
+					<Product key={product.id} addtocart={addtocart} product={product} />
 				</Suspense>
 			)}
 		</div>

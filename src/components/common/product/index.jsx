@@ -1,7 +1,8 @@
 import React from 'react'
 import './product.scss'
-function Product({product})
+function Product(props)
 {
+	let {product}=props 
 	return <div  className="item">
 					<big>{product.name}</big>
 					<br/>
