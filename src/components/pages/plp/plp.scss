@@ -19,6 +19,11 @@ main .left p
 	padding: 10px;
 	border-bottom: 1px solid silver;
 }
+main .left p.active
+{
+	background:$btnColor;
+	color:white;
+}
 main .right
 {
 	width: 75%;

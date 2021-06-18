@@ -27,35 +27,45 @@ function Signup(props)
 
 	const handleClick=() => {
 
-		setstatus({fn:true,ln:true,email:true,pwd:true,cpwd:true})
+		// setstatus({fn:true,ln:true,email:true,pwd:true,cpwd:true})
 
-		if(!err.fn &&!err.ln &&!err.email &&!err.pwd&&!err.cpwd )
-		{
-			return 
-		}
+		// if(!err.fn &&!err.ln &&!err.email &&!err.pwd&&!err.cpwd )
+		// {
+		// 	return 
+		// }
 
 		if(user.pwd===user.cpwd)
 		{
-			if(users.some(itemUser=>itemUser.email===user.email))
-			{
-				alert("email already exists")
-				props.history.push("/Login")
-			}
-			else
-			{
+			// if(users.some(itemUser=>itemUser.email===user.email))
+			// {
+			// 	alert("email already exists")
+			// 	props.history.push("/Login")
+			// }
+			// else
+			// {
 				let userFormValues={
 					fn:user.fn,
 					ln:user.ln,
 					email:user.email,
 					password:user.pwd
 				}
-				_post("users",userFormValues)
+				_post("signup",userFormValues)
 				.then(postUserResponse=>{
-					dispatch({type:"signup",payload:[...users,postUserResponse]})
-					alert("signup success")
-					props.history.push("/Login")
+					// console.log(postUserResponse)
+					if(postUserResponse.response==="Success")
+					{
+						alert("signup success")
+						props.history.push("/Login")
+						
+					}
+					else
+					{
+						alert("failed to do signup")
+					}
+					// dispatch({type:"signup",payload:[...users,postUserResponse]})
+					// alert("signup success")
 				})
-			}
+			// }
 		}
 		else
 		{

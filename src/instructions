@@ -1,0 +1,10 @@
+Main-<store>-<reducer><satte>
+    <App/>
+    Header
+        Routing
+        Home
+        Login   
+        Products
+        Signup
+    Footer
+    Cart

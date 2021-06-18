@@ -1,0 +1,2 @@
+.categories{width:70%;margin:5% auto;box-shadow:0 10px 10px silver;display:-webkit-flex;display:flex}*{font-weight:400}.categories .left,.categories .right{width:48%;padding:1%}.categories .right{text-align:center}.categories img{width:100%}.categories.active{-webkit-flex-flow:row-reverse;flex-flow:row-reverse}.categories button{background:#d10157;color:#fff}
+/*# sourceMappingURL=4.8363547f.chunk.css.map */

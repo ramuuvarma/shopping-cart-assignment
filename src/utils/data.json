@@ -386,20 +386,6 @@
       "email": "",
       "password": "",
       "id": 7
-    },
-    {
-      "fn": "sri",
-      "ln": "varma",
-      "email": "sri@gmail.com",
-      "password": "1234",
-      "id": 8
-    },
-    {
-      "fn": "sri",
-      "ln": "ram",
-      "email": "sri@123",
-      "password": "1234",
-      "id": 9
     }
   ],
   "cart": [],

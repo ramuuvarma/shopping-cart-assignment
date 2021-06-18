@@ -9,7 +9,7 @@ function Header()
 	let dispatch=useDispatch()
 
 	let {user,cart}=state
-	let mycart=cart.filter(cartItem=>cartItem.uid===user.id)
+	let mycart=cart
 	// uid here is user id from cart and user is object i.e loggedin in website currently
 	// all these coming from api and stored in intialState from store 
 	// the moment of bootstraping the website
@@ -31,8 +31,10 @@ function Header()
 				onClick={e=>dispatch({type:"cart-open"})}>
 					<i className="fa fa-2x fa-shopping-cart">
 					</i> 
-					{mycart.length} 
-					items
+					   {"  "}
+					 {mycart.length}  
+					   {"  "}
+					 items
 				</button>
 			</div>
 		</div>

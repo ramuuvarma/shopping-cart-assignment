@@ -1,5 +1,6 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux'
+import {_get} from '../../../utils'
 import './cart.scss'
 function Cart() {
 
@@ -7,8 +8,8 @@ function Cart() {
 	let dispatch=useDispatch()
 	let {toggleCart}=state
 
-	let {user,cart}=state
-	let mycart=cart.filter(cartItem=>cartItem.uid===user.id)
+	let {user,cart,products}=state
+	let mycart=cart.map(cartItem=>({...products.find(product=>product.id===cartItem.pid) ,...cartItem } ))
 	// uid here is user id who is viewing the cart now
 	// no cart items if you are not loggedin 
 	const subtotal=cartArray=>{
@@ -23,12 +24,15 @@ function Cart() {
 	}
 
 	const setQty =(id,qty) =>{
-		cart=cart.map(cartItem=>cartItem.id===id?({...cartItem,qty}):cartItem)
-		dispatch({type:"addtocart",payload:cart})
+		
+		_get("qty/"+id+"/"+qty)
+		.then(d=>d.responseMessage)
+		.then(d=>dispatch({type:"cart",payload:d}))
 	}
 	const removeFromCart=(id) =>{
-		cart=cart.filter(cartItem=>cartItem.id!==id)
-		dispatch({type:"addtocart",payload:cart})
+		_get("remove/"+id)
+		.then(d=>d.responseMessage)
+		.then(d=>dispatch({type:"cart",payload:d}))
 	}
 	return <div className={toggleCart?"cart-box active":"cart-box"}>
 		<div className="cart">
@@ -56,16 +60,16 @@ function Cart() {
 											<strong>{cartItem.name}</strong>
 											<br />
 											<div className="actions">
-												<div><button disabled={cartItem.qty>10} onClick={e=>setQty(cartItem.id,cartItem.qty+1)}>+</button></div>
+												<div><button  onClick={e=>setQty(cartItem.cid,cartItem.qty+1)}>+</button></div>
 												<div><span>{cartItem.qty}</span></div>
-												<div><button disabled={cartItem.qty<2} onClick={e=>setQty(cartItem.id,cartItem.qty-1)}>-</button></div>
+												<div><button disabled={cartItem.qty<2} onClick={e=>setQty(cartItem.cid,cartItem.qty-1)}>-</button></div>
 												<div><span> Rs.{cartItem.price}</span></div>
 											</div>
 										</div>
 									</div>
 									<div className="right">
 										<strong>Rs.{cartItem.qty*cartItem.price}</strong>
-										<button onClick={e=>removeFromCart(cartItem.id)}><i className="fa fa-trash-o"></i></button>
+										<button onClick={e=>removeFromCart(cartItem.cid)}><i className="fa fa-trash-o"></i></button>
 									</div>
 								</div>
 

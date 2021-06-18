@@ -20,7 +20,6 @@ function Home()
 				fallback={<p align="center"><i className="fa fa-5x fa-spin fa-spinner"></i></p>}>
 					<Category 
 					className={index%2===0?"categories active":"categories"} 
-
 					catgeory={catgeory} 
 					/>
 				</Suspense>

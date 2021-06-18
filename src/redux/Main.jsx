@@ -13,11 +13,13 @@ const intialState={
 	max:5,
 	cart:[],
 	toggleCart:false,
-	loggedin:false
+	loggedin:false,
+	category:""
 }
 function reducer(state=intialState,action)
 {
-	console.log(action.payload,state.cart,state.user)
+	// console.log(action.payload,state.cart,state.user)
+	console.log(action.payload,state.category,state.products)
 	switch(action.type)
 	{
 		case "products":return {...state,products:action.payload}
@@ -34,6 +36,7 @@ function reducer(state=intialState,action)
 		case "login":return {...state,user:action.payload,loggedin:true} 
 		case "signup":return {...state,users:action.payload} 
 		case "logout":return {...state,user:{},loggedin:false} 
+		case "category":return {...state,category:action.payload} 
 		default:
 			return state
 	}

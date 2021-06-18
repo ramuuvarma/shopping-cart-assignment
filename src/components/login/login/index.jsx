@@ -1,5 +1,6 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux'
+import {_post} from '../../../utils'
 import './login.scss'
 function Login(props)
 {
@@ -19,6 +20,28 @@ function Login(props)
 	let dispatch=useDispatch()
 
 	const handleClick=() => {
+		const userFormValues=user
+		_post("login",userFormValues)
+		.then(postUserResponse=>{
+			console.log(postUserResponse)
+			if(postUserResponse.response==="Success")
+			{
+				alert("login success")
+				localStorage.setItem("token",postUserResponse.user.token)
+				dispatch({type:"login",payload:postUserResponse.user})
+				props.history.push("/")
+				
+			}
+			else
+			{
+				alert("failed to do login")
+			}
+			// dispatch({type:"signup",payload:[...users,postUserResponse]})
+			// alert("signup success")
+		})
+
+	}
+	const handleClick1=() => {
 		setstatus({ email:true,password:true })
 		if(!err.email &&!err.password)
 		{
